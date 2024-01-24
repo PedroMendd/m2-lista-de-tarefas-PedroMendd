@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    background-color: #e2e2e2;
+    font-family: "Roboto", sans-serif;
+  }
+
+header {
+    background-color: white;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+input {
+    background-color: #ebebeb;
+    border-radius: 5px;
+}
+
+.header__content {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.header__title {
+    font-weight: bold;
+    color: #3b5bdb;
+}
+
+
+.form__container {
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    padding: 2rem;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-content: center;
+    align-items: stretch;
+}
+
+.form__button--add-task {
+    color: white;
+    background-color: #3b5bdb;
+    padding: 10px;
+}
+
+.form__input-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.tasks__container {
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    padding: 2rem;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-content: center;
+    align-items: stretch;
+}
+
+.tasks__list {
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f3f5;
+    margin-top: 10px;
+}
+
+.task__item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-info__container {
+    display: flex;
+    align-items: center;
+}
+
+
+.task-type_span-urgent {
+    width: 10px; 
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 10px; 
+    background-color: #e40404;
+}
+
+.task-type_span-important {
+    width: 10px; 
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 10px; 
+    background-color: #f3a703;
+}
+
+.task-type_span-normal {
+    width: 10px; 
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 10px; 
+    background-color: #028302; 
+}
+
+.task-info_text {
+    padding-left: 10px;
+}
+
+.material-symbols-outlined {
+  margin-right: 10px;
+  background-image: url('ASSETS/trash-icon.svg');
+  background-size: contain; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  display: inline-block; 
+  width: 12px;
+  height: 20px;
+}
