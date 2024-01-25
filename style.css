@@ -1,13 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+@import url(/assets/trash-icon.svg);
+
 body {
     background-color: #e2e2e2;
     font-family: "Roboto", sans-serif;
   }
 
+  button {
+    border: none;
+    cursor: pointer;
+  }
+  
+
 header {
     background-color: white;
-    height: 5vh;
+    height: 8vh;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -17,6 +25,17 @@ header {
 input {
     background-color: #ebebeb;
     border-radius: 5px;
+}
+
+.form__container,
+.tasks__container {
+    margin: 10px auto; 
+    max-width: 60vw;
+}
+
+.form__input--text_input__box,
+.form__input--priority_input__box {
+    width: 48%; 
 }
 
 .header__content {
@@ -82,8 +101,17 @@ input {
     flex-direction: column;
     background-color: #f1f3f5;
     margin-top: 10px;
+    padding: 10px
 }
 
+.task__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: white;
+
+}
 .task__item {
     display: flex;
     justify-content: space-between;
@@ -125,7 +153,7 @@ input {
 
 .material-symbols-outlined {
   margin-right: 10px;
-  background-image: url('ASSETS/trash-icon.svg');
+  background-image: url('assets/trash-icon.svg');
   background-size: contain; 
   background-position: center; 
   background-repeat: no-repeat; 
@@ -133,3 +161,4 @@ input {
   width: 12px;
   height: 20px;
 }
+

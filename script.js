@@ -12,91 +12,76 @@ const tasks = [
 ];
 
 
-function createTaskItem(title, type) {
+function createTaskItem(task) {
   const listItem = document.createElement('li')
   const taskContainer = document.createElement('div')
   const typeSpan = document.createElement('span')
   const taskName = document.createElement('p')
-  const deleteIcon = document.createElement('span')
+  const deleteButton = document.createElement('button')
 
   listItem.classList.add('task__item');
   taskContainer.classList.add('task-info__container')
 
-  if (type === 'Urgente' || type === 'urgente') {
+  if (task.type.toLowerCase() === 'urgente') {
     typeSpan.classList.add('task-type_span-urgent')
-  } else if (type === 'Importante' || type === 'importante') {
+  } else if (task.type.toLowerCase() === 'importante') {
     typeSpan.classList.add('task-type_span-important')
-  } else if (type === 'Normal'|| type === 'normal') {
+  } else if (task.type.toLowerCase() === 'normal') {
     typeSpan.classList.add('task-type_span-normal')
   }
 
   taskName.classList.add('task-info_text')
-  taskName.textContent = title
+  taskName.textContent = task.title
 
-  deleteIcon.classList.add('material-symbols-outlined')
+  deleteButton.classList.add('material-symbols-outlined')
+
+  deleteButton.classList.add('material-symbols-outlined')
+  deleteButton.addEventListener('click', function () {
+
+    const index = tasks.findIndex(t => t.title === task.title)
+
+    if (index !== -1) {
+      tasks.splice(index, 1)
+      renderElements(tasks)
+    }
+  });
 
   taskContainer.appendChild(typeSpan)
   taskContainer.appendChild(taskName)
   listItem.appendChild(taskContainer)
-  listItem.appendChild(deleteIcon)
-
-  document.addEventListener('click', function(event) {
-    const deleteIcon = event.target.classList.contains('material-symbols-outlined')
-  
-    if (deleteIcon) {
-      const listItem = event.target.parentElement
-  
-      if (listItem && listItem.classList.contains('task__item')) {
-        const taskTitle = listItem.querySelector('.task-info_text').textContent
-        const index = indexOfTask(taskTitle)
-  
-        if (index !== -1) {
-          tasks.splice(index, 1)
-          renderElements(tasks)
-        }
-      }
-    }
-  })
-  
-  function indexOfTask(title) {
-    for (let i = 0; i < tasks.length; i++) {
-      if (tasks[i].title === title) {
-        return i
-      }
-    }
-    return -1
-  }
+  listItem.appendChild(deleteButton)
 
   return listItem
 }
 
-function renderElements(arr) {
-  const tasksList = document.querySelector('.tasks__list')
-  
+function renderElements(tasks) {
+  const tasksList = document.querySelector('.tasks__list');
+
   tasksList.innerHTML = ''
 
-  for (let i = 0; i < arr.length; i++) {
-    const taskElement = createTaskItem(arr[i].title, arr[i].type)
+  for (let i = 0; i < tasks.length; i++) {
+    const taskElement = createTaskItem(tasks[i]);
     tasksList.appendChild(taskElement)
   }
 }
 
+const button = document.querySelector('.form__container');
 
-renderElements(tasks)
+button.addEventListener('submit', function (event) {
+  event.preventDefault()
 
-const button = document.querySelector('.form__container')
+  const inputName = document.querySelector('.form__input--text_input__box').value
+  const selectPriority = document.querySelector('.form__input--priority_input__box').value
 
-button.addEventListener('submit', function(event){
-    event.preventDefault()
-
-    const inputName = document.querySelector('.form__input--text_input__box').value
-    const selectPriority = document.querySelector('.form__input--priority_input__box').value
-
-    let newActivity = {
+  if (inputName && selectPriority) {
+    let newTask = {
       title: inputName,
       type: selectPriority,
-    }
+    };
 
-    tasks.push(newActivity)
+    tasks.push(newTask)
     renderElements(tasks)
+  }
 })
+
+renderElements(tasks)
