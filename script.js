@@ -36,10 +36,13 @@ function createTaskItem(task) {
   deleteButton.classList.add('material-symbols-outlined')
 
   deleteButton.classList.add('material-symbols-outlined')
+
   deleteButton.addEventListener('click', function () {
-
-    const index = tasks.findIndex(t => t.title === task.title)
-
+    
+    const index = tasks.findIndex(function(t) {
+      return t.title === task.title;
+    })
+  
     if (index !== -1) {
       tasks.splice(index, 1)
       renderElements(tasks)
