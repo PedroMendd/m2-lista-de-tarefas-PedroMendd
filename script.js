@@ -11,7 +11,6 @@ const tasks = [
   {title: "Assistir a um documentário interessante", type: "Normal"},
 ];
 
-
 function createTaskItem(task) {
   const listItem = document.createElement('li')
   const taskContainer = document.createElement('div')
@@ -31,17 +30,12 @@ function createTaskItem(task) {
   }
 
   taskName.classList.add('task-info_text')
-  taskName.textContent = task.title
-
-  deleteButton.classList.add('material-symbols-outlined')
+  taskName.textContent = task.title;
 
   deleteButton.classList.add('material-symbols-outlined')
 
   deleteButton.addEventListener('click', function () {
-    
-    const index = tasks.findIndex(function(t) {
-      return t.title === task.title;
-    })
+    const index = tasks.indexOf(task)
   
     if (index !== -1) {
       tasks.splice(index, 1)
@@ -58,21 +52,17 @@ function createTaskItem(task) {
 }
 
 function renderElements(tasks) {
-  const tasksList = document.querySelector('.tasks__list');
+  const tasksList = document.querySelector('.tasks__list')
 
   tasksList.innerHTML = ''
 
   for (let i = 0; i < tasks.length; i++) {
-    const taskElement = createTaskItem(tasks[i]);
+    const taskElement = createTaskItem(tasks[i])
     tasksList.appendChild(taskElement)
   }
 }
 
-const button = document.querySelector('.form__container');
-
-button.addEventListener('submit', function (event) {
-  event.preventDefault()
-
+function addTask() {
   const inputName = document.querySelector('.form__input--text_input__box').value
   const selectPriority = document.querySelector('.form__input--priority_input__box').value
 
@@ -84,7 +74,16 @@ button.addEventListener('submit', function (event) {
 
     tasks.push(newTask)
     renderElements(tasks)
+  } else {
+    alert("Por favor, preencha todos os campos antes de adicionar uma tarefa.")
   }
+}
+
+const button = document.querySelector('.form__container')
+
+button.addEventListener('submit', function (event) {
+  event.preventDefault()
+  addTask()
 })
 
 renderElements(tasks)
